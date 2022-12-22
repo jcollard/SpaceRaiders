@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
+    public AsteroidController OnDestroyedTemplate;
     public float RotationSpeed;
     public Vector2 Speed;
 
@@ -12,6 +13,28 @@ public class AsteroidController : MonoBehaviour
     {
         RotateMeteor();
         MoveMeteor();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        LaserController asLaser = other.GetComponent<LaserController>();
+        if (asLaser != null)
+        {
+            OnLaserHit(asLaser);
+        }
+
+    }
+
+    private void OnLaserHit(LaserController laser)
+    {
+        Destroy(laser.gameObject);
+        if (OnDestroyedTemplate != null)
+        {
+            AsteroidController newObj = Instantiate(OnDestroyedTemplate);
+            newObj.transform.position = this.transform.position;
+            newObj.RotationSpeed = RotationSpeed;
+            newObj.Speed = Speed;
+        }
+        Destroy(this.gameObject);
     }
 
     private void RotateMeteor()

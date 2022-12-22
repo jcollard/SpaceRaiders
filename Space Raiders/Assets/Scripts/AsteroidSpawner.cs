@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class AsteroidSpawner : MonoBehaviour
 {
-    public float SpawnRate;
-    public float LastSpawn;
-    public float MinRotation, MaxRotation;
+    public float SpawnRate = 2;
+    public float LastSpawn = 0;
+    public float MinRotation = -90, MaxRotation = 90;
     public Vector2 MinSpeed, MaxSpeed;
-    public Transform SpawnPoint;
+    public Transform MinSpawnPoint, MaxSpawnPoint;
+    public Vector2 MinSpawnVector => MinSpawnPoint.position;
+    public Vector2 MaxSpawnVector => MaxSpawnPoint.position;
     public AsteroidController Template;
     // Start is called before the first frame update
     void Start()
@@ -23,12 +25,13 @@ public class AsteroidSpawner : MonoBehaviour
         {
             SpawnAsteroid();
         }
-    }
+    } 
 
     private void SpawnAsteroid()
     {
         AsteroidController ac = Instantiate(Template);
-        ac.transform.position = SpawnPoint.position;
+        Vector2 spawnPoint = new (Random.Range(MinSpawnVector.x, MaxSpawnVector.x), MinSpawnVector.y);
+        ac.transform.position = spawnPoint;
         ac.RotationSpeed = Random.Range(MinRotation, MaxRotation);
         ac.Speed = new (Random.Range(MinSpeed.x, MaxSpeed.x), Random.Range(MinSpeed.y, MaxSpeed.y));
         LastSpawn = Time.time;
