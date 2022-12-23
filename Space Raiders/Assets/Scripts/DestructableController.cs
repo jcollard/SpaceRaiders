@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System;
 
+[RequireComponent(typeof(Collider2D))]
 public class DestructableController : MonoBehaviour
 {
     public GameController GameController { get; set; }

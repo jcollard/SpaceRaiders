@@ -23,7 +23,17 @@ public class GameController : MonoBehaviour
     [field: SerializeField]
     public float SpawnAt { get; private set; }= -1;
     [field: SerializeField]
-    public int Score { get; private set; } = 0;
+    private int _score = 0;
+    public int Score 
+    { 
+        get => _score; 
+        private set
+        {
+            _score = value;
+            OnScoreChange.Invoke(_score);
+        } 
+    }
+    public UnityEngine.Events.UnityEvent<int> OnScoreChange;
     // Start is called before the first frame update
     void Start()
     {
