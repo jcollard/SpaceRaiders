@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8615738179182120507}
   - component: {fileID: 8286252236435041600}
   - component: {fileID: -6070404078169801435}
+  - component: {fileID: 1360374804846214381}
   m_Layer: 0
   m_Name: AsteroidBig
   m_TagString: Untagged
@@ -196,3 +197,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f73fd083032b744aac1197ba28f9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1360374804846214381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8994893343589686324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4590d10b7eb89884ab9ae47d56068b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <GameController>k__BackingField: {fileID: 0}
+  <Points>k__BackingField: 50
+  <OnHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8994893343589686325}
+        m_TargetAssemblyTypeName: AsteroidController, Assembly-CSharp
+        m_MethodName: OnLaserHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

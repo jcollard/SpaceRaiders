@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     public float SpawnDelay { get; private set; } = 3;
     [field: SerializeField]
     public float SpawnAt { get; private set; }= -1;
+    [field: SerializeField]
+    public int Score { get; private set; } = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,11 @@ public class GameController : MonoBehaviour
         {
             SpawnPlayer();
         }
+    }
+
+    public void IncrementScore(int amount)
+    {
+        Score += amount;
     }
 
     private void SpawnPlayer()

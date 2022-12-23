@@ -24,6 +24,8 @@ public class AsteroidSpawner : MonoBehaviour
     public Vector2 MaxSpawnVector => MaxSpawnPoint.position;
     [field: SerializeField]
     public AsteroidController Template { get; private set; }
+    [field: SerializeField]
+    public GameController GameController { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +45,7 @@ public class AsteroidSpawner : MonoBehaviour
     {
         float rotationSpeed = Random.Range(MinRotation, MaxRotation);
         Vector2 speed = new (Random.Range(MinSpeed.x, MaxSpeed.x), Random.Range(MinSpeed.y, MaxSpeed.y));
-        AsteroidController ac = AsteroidController.Spawn(Template, rotationSpeed, speed);
+        AsteroidController ac = AsteroidController.Spawn(Template, rotationSpeed, speed, GameController);
         Vector2 spawnPoint = new(Random.Range(MinSpawnVector.x, MaxSpawnVector.x), MinSpawnVector.y);
         ac.transform.position = spawnPoint;
         LastSpawn = Time.time;

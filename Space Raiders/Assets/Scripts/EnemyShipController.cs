@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DestructableController))]
 public class EnemyShipController : MonoBehaviour
 {
     [field: SerializeField]
@@ -37,27 +38,13 @@ public class EnemyShipController : MonoBehaviour
         }
     }
 
-    public static EnemyShipController Spawn(IEnemyShip enemy)
+    public static EnemyShipController Spawn(IEnemyShip enemy, GameController gameController)
     {
          EnemyShipController newEnemy = Instantiate(enemy.Template);
+         newEnemy.GetComponent<DestructableController>().GameController = gameController;
          newEnemy.WayPoints = enemy.WayPoints;
          newEnemy.transform.position = enemy.SpawnPoint;
          return newEnemy;
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        LaserController asLaser = other.GetComponent<LaserController>();
-        if (asLaser != null)
-        {
-            OnLaserHit(asLaser);
-        }
-    }
-
-    private void OnLaserHit(LaserController laser)
-    {
-        Destroy(laser.gameObject);
-        Destroy(this.gameObject);
     }
 
     // Update is called once per frame

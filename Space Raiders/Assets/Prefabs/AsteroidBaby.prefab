@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4813309348514541511}
   - component: {fileID: 2063646677563353524}
   - component: {fileID: -7720940537952148513}
+  - component: {fileID: 9074266645305488895}
   m_Layer: 0
   m_Name: AsteroidBaby
   m_TagString: Untagged
@@ -180,3 +181,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f73fd083032b744aac1197ba28f9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9074266645305488895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2746122400082055181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4590d10b7eb89884ab9ae47d56068b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <GameController>k__BackingField: {fileID: 0}
+  <Points>k__BackingField: 100
+  <OnHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []

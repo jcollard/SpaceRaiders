@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DestructableController))]
 public class AsteroidController : MonoBehaviour
 {
     [field: SerializeField]
@@ -10,10 +11,13 @@ public class AsteroidController : MonoBehaviour
     public float RotationSpeed { get; private set; }
     [field: SerializeField]
     public Vector2 Speed { get; private set; }
+    public GameController GameController { get; private set; }
 
-    public static AsteroidController Spawn(AsteroidController template, float rotationSpeed, Vector2 speed)
+    public static AsteroidController Spawn(AsteroidController template, float rotationSpeed, Vector2 speed, GameController gameController)
     {
         AsteroidController newAsteroid = Instantiate(template);
+        newAsteroid.GameController = gameController;
+        newAsteroid.GetComponent<DestructableController>().GameController = gameController;
         newAsteroid.RotationSpeed = rotationSpeed;
         newAsteroid.Speed = speed;
         return newAsteroid;
@@ -26,27 +30,14 @@ public class AsteroidController : MonoBehaviour
         MoveMeteor();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnLaserHit(LaserController laser, DestructableController destructable)
     {
-        LaserController asLaser = other.GetComponent<LaserController>();
-        if (asLaser != null)
-        {
-            OnLaserHit(asLaser);
-        }
-
-    }
-
-    private void OnLaserHit(LaserController laser)
-    {
-        Destroy(laser.gameObject);
         if (OnDestroyedTemplate != null)
         {
-            AsteroidController newObj = Instantiate(OnDestroyedTemplate);
+            AsteroidController newObj = Spawn(OnDestroyedTemplate, RotationSpeed, Speed, GameController);
             newObj.transform.position = this.transform.position;
-            newObj.RotationSpeed = RotationSpeed;
-            newObj.Speed = Speed;
         }
-        Destroy(this.gameObject);
+        destructable.DefaultDestroy(laser);
     }
 
     private void RotateMeteor()

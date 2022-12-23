@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6494428161321558858}
   - component: {fileID: 6494428161321558856}
   - component: {fileID: 6494428161321558857}
+  - component: {fileID: 4214786985674174841}
   m_Layer: 0
   m_Name: Enemy Ship
   m_TagString: Untagged
@@ -213,3 +214,19 @@ PolygonCollider2D:
       - {x: -0.19, y: -0.11}
       - {x: -0.13, y: -0.17999999}
       - {x: 0.14999999, y: -0.16}
+--- !u!114 &4214786985674174841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494428161321558862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4590d10b7eb89884ab9ae47d56068b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Points>k__BackingField: 250
+  <OnHit>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []

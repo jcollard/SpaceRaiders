@@ -7,9 +7,10 @@ public class EnemySpawner : MonoBehaviour
 
     [field: SerializeField]
     public float SpawnRate { get; set; } = 3;
-
     [field: SerializeField]
     private List<IEnemyShip> EnemyQueue { get; set; } = new ();
+    [field: SerializeField]
+    public GameController GameController { get; set; }
 
     void Start()
     {
@@ -23,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         {
             IEnemyShip enemy = EnemyQueue[0];
             EnemyQueue.RemoveAt(0);
-            EnemyShipController.Spawn(enemy);
+            EnemyShipController.Spawn(enemy, GameController);
         }
     }
 
