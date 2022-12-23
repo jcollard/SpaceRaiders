@@ -4,14 +4,45 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [field: SerializeField]
+    public Sprite LeanLeft { get; private set; }
+    [field: SerializeField]
+    public Sprite LeanRight { get; private set; }
+    [field: SerializeField]
+    public Sprite Forward { get; private set; }
 
-    public float Speed;
-    public float DamageBoost = 3;
-    public GameController GameController;
-    public GameObject Laser;
-    public Transform FrontLaserSpawn;
-    public Vector2 Velocity = new (0, 0);
-    public Vector2 Min, Max;
+    [field: SerializeField]
+    public float Speed { get; private set; } = 5;
+    
+    [field: SerializeField]
+    public float DamageBoost { get; private set; } = 3;
+    public bool HasDamageBoost => DamageBoost > 0;
+    public bool IsVisible => !HasDamageBoost || Mathf.Sin(Time.time * 20) > 0;
+    
+    [field: SerializeField]
+    public GameController GameController { get; private set; }
+    
+    [field: SerializeField]
+    public GameObject Laser { get; private set; }
+    
+    [field: SerializeField]
+    public Transform FrontLaserSpawn { get; private set; }
+    
+    [field: SerializeField]
+    public Vector2 Velocity { get; private set; } = new (0, 0);
+    
+    [field: SerializeField]
+    public Vector2 Min {get; private set; }
+
+    [field: SerializeField]
+    public Vector2 Max {get; private set; }
+
+    public static PlayerController Spawn(PlayerController template, GameController gc)
+    {
+        PlayerController pc = Instantiate(template);
+        pc.GameController = gc;
+        return pc;
+    }
 
     // Update is called once per frame
     void Update()
@@ -20,17 +51,19 @@ public class PlayerController : MonoBehaviour
         HandleFire();
         HandleDamageBoost();
         MoveShip();
+        UpdateSprite();
     }
 
     private void HandleDamageBoost()
     {
+        this.GetComponent<Renderer>().enabled = IsVisible;
         DamageBoost -= Time.deltaTime;
         DamageBoost = Mathf.Max(0, DamageBoost);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        AsteroidController asAsteroid = other.GetComponent<AsteroidController>();
-        if (asAsteroid != null && DamageBoost <= 0)
+        PlayerImpactor asImpactor = other.GetComponent<PlayerImpactor>();
+        if (asImpactor != null && DamageBoost <= 0)
         {
             GameController.DestroyPlayer(this);
         }
@@ -42,6 +75,22 @@ public class PlayerController : MonoBehaviour
         {
             GameObject laser = Instantiate(Laser);
             laser.transform.position = FrontLaserSpawn.position;
+        }
+    }
+
+    private void UpdateSprite()
+    {
+        if (Velocity.x < 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = LeanLeft;
+        }
+        else if (Velocity.x > 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = LeanRight;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().sprite = Forward;
         }
     }
 

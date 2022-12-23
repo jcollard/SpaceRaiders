@@ -298,15 +298,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b6289d508a00d44b6f27c6492e81e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRate: 2
-  LastSpawn: 0
-  MinRotation: -90
-  MaxRotation: 90
-  MinSpeed: {x: 0, y: -3}
-  MaxSpeed: {x: 0, y: -1}
-  MinSpawnPoint: {fileID: 17622194}
+  <SpawnRate>k__BackingField: 2
+  <LastSpawn>k__BackingField: 0
+  <MinRotation>k__BackingField: -90
+  <MaxRotation>k__BackingField: 90
+  <MinSpeed>k__BackingField: {x: 0, y: -2}
+  <MaxSpeed>k__BackingField: {x: 0, y: -3}
+  <MinSpawnPoint>k__BackingField: {fileID: 17622194}
   MaxSpawnPoint: {fileID: 263406553}
-  Template: {fileID: 8994893343589686325, guid: ebaecf8bce10fab409f2fa29dcfb3d57, type: 3}
+  <Template>k__BackingField: {fileID: 8994893343589686325, guid: ebaecf8bce10fab409f2fa29dcfb3d57, type: 3}
 --- !u!4 &889631761
 Transform:
   m_ObjectHideFlags: 0
@@ -353,10 +353,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50807efbd62277f47ad82d0c49d77d38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerTemplate: {fileID: 3015076329381739179, guid: dcd1c4a01d892254685937aa45a4d602, type: 3}
-  PlayerSpawnPoint: {fileID: 1273844407}
-  SpawnDelay: 3
-  SpawnAt: -1
+  <PlayerTemplate>k__BackingField: {fileID: 3015076329381739179, guid: dcd1c4a01d892254685937aa45a4d602, type: 3}
+  <PlayerSpawnPoint>k__BackingField: {fileID: 1273844407}
+  <SpawnDelay>k__BackingField: 3
+  <SpawnAt>k__BackingField: -1
 --- !u!4 &1254975467
 Transform:
   m_ObjectHideFlags: 0

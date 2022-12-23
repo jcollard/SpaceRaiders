@@ -5,18 +5,14 @@ using UnityEngine;
 public class LaserController : MonoBehaviour
 {
 
-    public Vector2 Speed = new (0, 5);
+    [field: SerializeField]
+    public Vector2 Speed { get; private set; } = new(0, 5);
 
     // Update is called once per frame
     void Update()
     {
         MoveLaser();
     }
-
-    // private void OnTriggerEnter2D(Collider2D other) {
-    //     // LaserController asLaser = other.GetComponent<LaserController>();
-    //     Debug.Log($"{this}.OnTriggerEnter2D({other}");
-    // }
 
     private void MoveLaser()
     {

@@ -4,14 +4,47 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public PlayerController PlayerTemplate;
-    public Transform PlayerSpawnPoint;
-    public float SpawnDelay = 3;
-    public float SpawnAt = -1;
+    [field: SerializeField]
+    private EnemySpawner EnemySpawner { get; set; }
+    [field: SerializeField]
+    public Transform EnemySpawnPoint { get; private set; }
+
+    [field: SerializeField]
+    public List<EnemyShipController> EnemyTypes { get; private set; }
+    [field: SerializeField]
+    public List<Transform> WayPoints { get; private set; }
+
+    [field: SerializeField]
+    public PlayerController PlayerTemplate { get; private set; }
+    [field: SerializeField]
+    public Transform PlayerSpawnPoint { get; private set; }
+    [field: SerializeField]
+    public float SpawnDelay { get; private set; } = 3;
+    [field: SerializeField]
+    public float SpawnAt { get; private set; }= -1;
     // Start is called before the first frame update
     void Start()
     {
         SpawnPlayer();
+        List<Transform> waypoints = new ()
+        {
+            WayPoints[0], WayPoints[1], WayPoints[2]
+        };
+        List<Transform> waypoints2 = new ()
+        {
+            WayPoints[2], WayPoints[1], WayPoints[0]
+        };
+        List<Transform> waypoints3 = new ()
+        {
+            WayPoints[0], WayPoints[2], WayPoints[1], WayPoints[2]
+        };
+        List<IEnemyShip> enemies = new ()
+        {
+            new EnemyShip(EnemyTypes[0], waypoints, EnemySpawnPoint.position),
+            new EnemyShip(EnemyTypes[0], waypoints2, EnemySpawnPoint.position),
+            new EnemyShip(EnemyTypes[0], waypoints3, EnemySpawnPoint.position)
+        };
+        EnemySpawner.EnqueueEnemies(enemies);
     }
 
     // Update is called once per frame
@@ -25,8 +58,7 @@ public class GameController : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        PlayerController pc = Instantiate(PlayerTemplate);
-        pc.GameController = this;
+        PlayerController pc = PlayerController.Spawn(PlayerTemplate, this);
         pc.transform.position = PlayerSpawnPoint.position;
         SpawnAt = -1;
     }

@@ -4,9 +4,20 @@ using UnityEngine;
 
 public class AsteroidController : MonoBehaviour
 {
-    public AsteroidController OnDestroyedTemplate;
-    public float RotationSpeed;
-    public Vector2 Speed;
+    [field: SerializeField]
+    public AsteroidController OnDestroyedTemplate { get; private set; }
+    [field: SerializeField]
+    public float RotationSpeed { get; private set; }
+    [field: SerializeField]
+    public Vector2 Speed { get; private set; }
+
+    public static AsteroidController Spawn(AsteroidController template, float rotationSpeed, Vector2 speed)
+    {
+        AsteroidController newAsteroid = Instantiate(template);
+        newAsteroid.RotationSpeed = rotationSpeed;
+        newAsteroid.Speed = speed;
+        return newAsteroid;
+    }
 
     // Update is called once per frame
     void Update()
@@ -15,7 +26,8 @@ public class AsteroidController : MonoBehaviour
         MoveMeteor();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         LaserController asLaser = other.GetComponent<LaserController>();
         if (asLaser != null)
         {
@@ -40,8 +52,8 @@ public class AsteroidController : MonoBehaviour
     private void RotateMeteor()
     {
         float newZ = transform.rotation.eulerAngles.z + (RotationSpeed * Time.deltaTime);
-        Vector3 newR = new (0, 0, newZ);
-        transform.rotation = Quaternion.Euler(newR);        
+        Vector3 newR = new(0, 0, newZ);
+        transform.rotation = Quaternion.Euler(newR);
     }
 
     public void MoveMeteor()

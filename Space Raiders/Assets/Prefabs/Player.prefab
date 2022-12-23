@@ -100,14 +100,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a52bddaabbd472742adda6c025352ca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  DamageBoost: 2
-  GameController: {fileID: 0}
-  Laser: {fileID: 7269265395018511851, guid: 5af9ec9544eb81c4d9f699144a6b673b, type: 3}
-  FrontLaserSpawn: {fileID: 3015076329648511911}
-  Velocity: {x: 0, y: 0}
-  Min: {x: -2.3, y: -4.5}
-  Max: {x: 2.3, y: -2.5}
+  <LeanLeft>k__BackingField: {fileID: 21300000, guid: fa29ffc7edb54414daea866b7b055913, type: 3}
+  <LeanRight>k__BackingField: {fileID: 21300000, guid: fbd2c6e745dcac0419829e4e88ef86d1, type: 3}
+  <Forward>k__BackingField: {fileID: 21300000, guid: 9efd13f7cbec1da48b1cc07488eaade3, type: 3}
+  <Speed>k__BackingField: 5
+  <DamageBoost>k__BackingField: 3
+  <GameController>k__BackingField: {fileID: 0}
+  <Laser>k__BackingField: {fileID: 7269265395018511851, guid: 5af9ec9544eb81c4d9f699144a6b673b, type: 3}
+  <FrontLaserSpawn>k__BackingField: {fileID: 3015076329648511911}
+  <Velocity>k__BackingField: {x: 0, y: 0}
+  <Min>k__BackingField: {x: -2.5, y: -5}
+  <Max>k__BackingField: {x: 2.5, y: 5}
 --- !u!50 &3015076329381739175
 Rigidbody2D:
   serializedVersion: 4
