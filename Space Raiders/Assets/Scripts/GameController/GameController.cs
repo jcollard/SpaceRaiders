@@ -8,6 +8,11 @@ public class GameController : MonoBehaviour
     public UnityEngine.Events.UnityEvent<int> OnLivesChange;
 
     [field: SerializeField]
+    public GameObject GameOverScreen { get; private set; }
+    [field: SerializeField]
+    public GameObject StartScreen { get; private set; }
+
+    [field: SerializeField]
     private int _livesRemaining = 3;
     public int LivesRemaining
     {
@@ -48,15 +53,26 @@ public class GameController : MonoBehaviour
             OnScoreChange.Invoke(_score);
         }
     }
-    [field: SerializeField]
-    public GameObject GameOverScreen { get; private set; }
     
 
-    // Start is called before the first frame update
-    void Start()
+
+    // Update is called once per frame
+    void Update()
     {
-        LivesRemaining = 3;
-        SpawnPlayer();
+        if (SpawnAt > 0 && Time.time > SpawnAt)
+        {
+            SpawnPlayer();
+        }
+    }
+
+    public void IncrementScore(int amount)
+    {
+        Score += amount;
+    }
+
+    public void InsertCoin()
+    {
+        DestroyAll();
         List<Transform> waypoints = new()
         {
             WayPoints[0], WayPoints[1], WayPoints[2]
@@ -76,27 +92,24 @@ public class GameController : MonoBehaviour
             new EnemyShip(EnemyTypes[0], waypoints3, EnemySpawnPoint.position)
         };
         EnemySpawner.EnqueueEnemies(enemies);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (SpawnAt > 0 && Time.time > SpawnAt)
-        {
-            SpawnPlayer();
-        }
-    }
-
-    public void IncrementScore(int amount)
-    {
-        Score += amount;
-    }
-
-    public void InsertCoin()
-    {
+        StartScreen.SetActive(false);
         GameOverScreen.SetActive(false);
         LivesRemaining = 3;
+        Score = 0;
         SpawnPlayer();
+    }
+
+    private void DestroyAll()
+    {
+        foreach (DestructableController toDestroy in  FindObjectsOfType<DestructableController>())
+        {
+            Destroy(toDestroy.gameObject);
+        }
+        foreach (OnScreenController toDestroy in  FindObjectsOfType<OnScreenController>())
+        {
+            Destroy(toDestroy.gameObject);
+        }
     }
 
     private void SpawnPlayer()
