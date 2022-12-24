@@ -48,6 +48,9 @@ public class GameController : MonoBehaviour
             OnScoreChange.Invoke(_score);
         }
     }
+    [field: SerializeField]
+    public GameObject GameOverScreen { get; private set; }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +92,13 @@ public class GameController : MonoBehaviour
         Score += amount;
     }
 
+    public void InsertCoin()
+    {
+        GameOverScreen.SetActive(false);
+        LivesRemaining = 3;
+        SpawnPlayer();
+    }
+
     private void SpawnPlayer()
     {
         if (LivesRemaining > 0)
@@ -104,5 +114,9 @@ public class GameController : MonoBehaviour
         Destroy(toDestroy.gameObject);
         SpawnAt = Time.time + SpawnDelay;
         LivesRemaining--;
+        if (LivesRemaining <= 0)
+        {
+            GameOverScreen.SetActive(true);
+        }
     }
 }
