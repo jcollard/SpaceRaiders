@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public UnityEngine.Events.UnityEvent<int> OnScoreChange;
+    public UnityEngine.Events.UnityEvent<int> OnLivesChange;
+
+    [field: SerializeField]
+    private int _livesRemaining = 3;
+    public int LivesRemaining
+    {
+        get => _livesRemaining;
+        private set
+        {
+            _livesRemaining = value;
+            OnLivesChange.Invoke(_livesRemaining);
+        }
+    }
+
     [field: SerializeField]
     private EnemySpawner EnemySpawner { get; set; }
     [field: SerializeField]
@@ -21,36 +36,37 @@ public class GameController : MonoBehaviour
     [field: SerializeField]
     public float SpawnDelay { get; private set; } = 3;
     [field: SerializeField]
-    public float SpawnAt { get; private set; }= -1;
+    public float SpawnAt { get; private set; } = -1;
     [field: SerializeField]
     private int _score = 0;
-    public int Score 
-    { 
-        get => _score; 
+    public int Score
+    {
+        get => _score;
         private set
         {
             _score = value;
             OnScoreChange.Invoke(_score);
-        } 
+        }
     }
-    public UnityEngine.Events.UnityEvent<int> OnScoreChange;
+
     // Start is called before the first frame update
     void Start()
     {
+        LivesRemaining = 3;
         SpawnPlayer();
-        List<Transform> waypoints = new ()
+        List<Transform> waypoints = new()
         {
             WayPoints[0], WayPoints[1], WayPoints[2]
         };
-        List<Transform> waypoints2 = new ()
+        List<Transform> waypoints2 = new()
         {
             WayPoints[2], WayPoints[1], WayPoints[0]
         };
-        List<Transform> waypoints3 = new ()
+        List<Transform> waypoints3 = new()
         {
             WayPoints[0], WayPoints[2], WayPoints[1], WayPoints[2]
         };
-        List<IEnemyShip> enemies = new ()
+        List<IEnemyShip> enemies = new()
         {
             new EnemyShip(EnemyTypes[0], waypoints, EnemySpawnPoint.position),
             new EnemyShip(EnemyTypes[0], waypoints2, EnemySpawnPoint.position),
@@ -75,14 +91,18 @@ public class GameController : MonoBehaviour
 
     private void SpawnPlayer()
     {
-        PlayerController pc = PlayerController.Spawn(PlayerTemplate, this);
-        pc.transform.position = PlayerSpawnPoint.position;
-        SpawnAt = -1;
+        if (LivesRemaining > 0)
+        {
+            PlayerController pc = PlayerController.Spawn(PlayerTemplate, this);
+            pc.transform.position = PlayerSpawnPoint.position;
+            SpawnAt = -1;
+        }
     }
 
     public void DestroyPlayer(PlayerController toDestroy)
     {
         Destroy(toDestroy.gameObject);
         SpawnAt = Time.time + SpawnDelay;
+        LivesRemaining--;
     }
 }

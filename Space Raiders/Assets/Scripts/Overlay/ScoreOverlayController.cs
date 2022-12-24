@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 
 [RequireComponent(typeof(GameController))]
-public class OverlayController : MonoBehaviour
+public class ScoreOverlayController : MonoBehaviour
 {
     [field: SerializeField]
     private TextMeshProUGUI Score { get; set; }
