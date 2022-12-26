@@ -12,6 +12,8 @@ public class DestructableController : MonoBehaviour
     public int Points { get; private set; }
     [field: SerializeField]
     private UnityEvent<LaserController, DestructableController>  OnHit { get; set; }
+    [field: SerializeField]
+    private UnityEvent<DestructableController> OnDestroyed { get; set; }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,6 +35,8 @@ public class DestructableController : MonoBehaviour
     {
         GameController.IncrementScore(Points);
         Destroy(laser.gameObject);
+        OnDestroyed.Invoke(this);
         Destroy(this.gameObject);
+        
     }
 }

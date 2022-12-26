@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6494428161321558856}
   - component: {fileID: 6494428161321558857}
   - component: {fileID: 4214786985674174841}
+  - component: {fileID: 192069358815263115}
   m_Layer: 0
   m_Name: Enemy Ship
   m_TagString: Untagged
@@ -230,3 +231,33 @@ MonoBehaviour:
   <OnHit>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
+  <OnDestroyed>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 192069358815263115}
+        m_TargetAssemblyTypeName: LootTableController, Assembly-CSharp
+        m_MethodName: CheckDrop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &192069358815263115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494428161321558862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88cc5f5d071b984d9b646ce589ed8b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PowerUps>k__BackingField:
+  - {fileID: 2964915179760269722, guid: 268ec5c51eef31f41bd4970c2b3b2f57, type: 3}
+  <DropProbability>k__BackingField: 1
