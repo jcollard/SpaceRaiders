@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class PlayerImpactor : MonoBehaviour
 {
-
+    public virtual void OnImpact(PlayerController player)
+    {
+        Destroy(this.gameObject);
+    }
 }
