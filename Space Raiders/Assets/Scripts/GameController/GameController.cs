@@ -10,11 +10,6 @@ public class GameController : MonoBehaviour
     public UnityEngine.Events.UnityEvent<GameController> OnGameOver;
 
     [field: SerializeField]
-    public GameObject GameOverScreen { get; private set; }
-    [field: SerializeField]
-    public GameObject StartScreen { get; private set; }
-
-    [field: SerializeField]
     private int _livesRemaining = 3;
     public int LivesRemaining
     {
@@ -95,8 +90,6 @@ public class GameController : MonoBehaviour
         };
         EnemySpawner.EnqueueEnemies(enemies);
 
-        StartScreen.SetActive(false);
-        GameOverScreen.SetActive(false);
         LivesRemaining = 3;
         Score = 0;
         SpawnPlayer();
@@ -132,7 +125,6 @@ public class GameController : MonoBehaviour
         LivesRemaining--;
         if (LivesRemaining <= 0)
         {
-            GameOverScreen.SetActive(true);
             OnGameOver.Invoke(this);
         }
     }
