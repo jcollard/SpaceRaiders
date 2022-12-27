@@ -6,6 +6,8 @@ public class GameController : MonoBehaviour
 {
     public UnityEngine.Events.UnityEvent<int> OnScoreChange;
     public UnityEngine.Events.UnityEvent<int> OnLivesChange;
+    public UnityEngine.Events.UnityEvent<GameController> OnInsertCoin;
+    public UnityEngine.Events.UnityEvent<GameController> OnGameOver;
 
     [field: SerializeField]
     public GameObject GameOverScreen { get; private set; }
@@ -98,6 +100,7 @@ public class GameController : MonoBehaviour
         LivesRemaining = 3;
         Score = 0;
         SpawnPlayer();
+        OnInsertCoin.Invoke(this);
     }
 
     private void DestroyAll()
@@ -130,6 +133,7 @@ public class GameController : MonoBehaviour
         if (LivesRemaining <= 0)
         {
             GameOverScreen.SetActive(true);
+            OnGameOver.Invoke(this);
         }
     }
 }
