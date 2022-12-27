@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShieldPowerUpController : PowerUpController
 {
-    public override void OnCollect(PlayerController player)
+    public override void Collect(PlayerController player)
     {
         player.ShieldPower++;
-        base.OnCollect(player);
+        base.Collect(player);
     }
 }

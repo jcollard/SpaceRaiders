@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [field: SerializeField]
     public UnityEvent<PlayerController> OnChange { get; private set; }
     [field: SerializeField]
+    public UnityEvent<PlayerController> OnDestroyed { get; private set; }
+    [field: SerializeField]
     public Sprite LeanLeft { get; private set; }
     [field: SerializeField]
     public Sprite LeanRight { get; private set; }
@@ -25,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private int _shieldPower = 0;
 
     /// <summary>
-    /// The ship's ShieldPower is a value between 0 and 5.
+    /// The ship's ShieldPower is a value is clamped between 0 and 5.
     /// </summary>
     public int ShieldPower
     {
@@ -36,9 +38,6 @@ public class PlayerController : MonoBehaviour
             OnChange.Invoke(this);
         }
     }
-
-    [field: SerializeField]
-    public GameController GameController { get; private set; }
 
     [field: SerializeField]
     public GameObject Laser { get; private set; }
@@ -58,7 +57,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Spawn(PlayerController template, GameController gc)
     {
         PlayerController pc = Instantiate(template);
-        pc.GameController = gc;
+        pc.OnDestroyed.AddListener(gc.DestroyPlayer);
         return pc;
     }
 
@@ -84,20 +83,26 @@ public class PlayerController : MonoBehaviour
         DamageBoost = Mathf.Max(0, DamageBoost);
     }
 
+    public void TakeDamage(int amount)
+    {
+        if (amount < 0) throw new System.ArgumentException("Cannot take a non-positive amount of damage.");
+        if (ShieldPower <= 0)
+        {
+            OnDestroyed.Invoke(this);
+        }
+        else
+        {
+            ShieldPower -= amount;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerImpactor asImpactor = other.GetComponent<PlayerImpactor>();
         if (asImpactor != null && DamageBoost <= 0)
         {
             asImpactor.OnImpact(this);
-            if (ShieldPower <= 0)
-            {
-                GameController.DestroyPlayer(this);
-            }
-            else
-            {
-                ShieldPower--;
-            }
+            TakeDamage(1);
         }
     }
 

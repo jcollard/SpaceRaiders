@@ -9,4 +9,10 @@ public class ExplosionController : MonoBehaviour
         ExplosionController e = Instantiate(this, destructable.transform.position, Quaternion.identity);
         e.gameObject.SetActive(true);
     }
+
+    public void Explode(MonoBehaviour destructable)
+    {
+        ExplosionController e = Instantiate(this, destructable.transform.position, Quaternion.identity);
+        e.gameObject.SetActive(true);
+    }
 }
