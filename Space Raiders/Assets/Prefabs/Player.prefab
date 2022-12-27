@@ -133,6 +133,7 @@ Transform:
   - {fileID: 4913905499065012977}
   - {fileID: 8796088856169171354}
   - {fileID: 3905879085769588692}
+  - {fileID: 2885411682251487902}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,6 +235,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ExplosionController, Assembly-CSharp
         m_MethodName: Explode
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6140225724349697486}
+        m_TargetAssemblyTypeName: SoundEffectController, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -491,6 +504,83 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Clip>k__BackingField: {fileID: 8300000, guid: 471d51f5436e8ac4f9c8153c6c33dd44, type: 3}
   <PowerDownSound>k__BackingField: {fileID: 8300000, guid: 2abd1e84f2b8fb64a9802f77d0fa86d1, type: 3}
+--- !u!1001 &1979336719524151255
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3015076329381739177}
+    m_Modifications:
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642573285788742169, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: <Clip>k__BackingField
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d9854cf41855924c9cc8f06f136173c, type: 3}
+    - target: {fileID: 8275744863072384841, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+      propertyPath: m_Name
+      value: Explosion SFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+--- !u!4 &2885411682251487902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+  m_PrefabInstance: {fileID: 1979336719524151255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6140225724349697486 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5642573285788742169, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+  m_PrefabInstance: {fileID: 1979336719524151255}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed105271e37410d4ebb7db59998c36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5288055918825524435
 PrefabInstance:
   m_ObjectHideFlags: 0
