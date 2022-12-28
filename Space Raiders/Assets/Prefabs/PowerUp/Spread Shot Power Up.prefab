@@ -167,7 +167,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <OnCollect>k__BackingField:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7919132846117129286}
+        m_TargetAssemblyTypeName: SoundEffectController, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   <Weapon>k__BackingField:
     <FireRate>k__BackingField: 0.5
     <LastFired>k__BackingField: 0
@@ -238,3 +250,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3707323278948500809, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
   m_PrefabInstance: {fileID: 2569334220253789791}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7919132846117129286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5642573285788742169, guid: bbd000dd662dddb4ca678cebd7d70a09, type: 3}
+  m_PrefabInstance: {fileID: 2569334220253789791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed105271e37410d4ebb7db59998c36ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

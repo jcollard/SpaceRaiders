@@ -287,7 +287,7 @@ MonoBehaviour:
   <PowerUps>k__BackingField:
   - {fileID: 2964915179760269722, guid: 268ec5c51eef31f41bd4970c2b3b2f57, type: 3}
   - {fileID: 788033085797744934, guid: 45c2e677dc10d2545b67d364bcef4ff9, type: 3}
-  <DropProbability>k__BackingField: 0.25
+  <DropProbability>k__BackingField: 1
 --- !u!1001 &386972922056274888
 PrefabInstance:
   m_ObjectHideFlags: 0

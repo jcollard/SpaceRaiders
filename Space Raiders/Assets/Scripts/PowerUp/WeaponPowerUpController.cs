@@ -10,7 +10,6 @@ public class WeaponPowerUpController : PowerUpController
     public override void Collect(PlayerController player)
     {
         player.Weapon = Weapon;
-        player.ShieldPower++;
         base.Collect(player);
     }
 }

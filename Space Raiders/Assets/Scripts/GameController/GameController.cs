@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public UnityEngine.Events.UnityEvent<int> OnLivesChange;
     public UnityEngine.Events.UnityEvent<GameController> OnInsertCoin;
     public UnityEngine.Events.UnityEvent<GameController> OnGameOver;
+    public UnityEngine.Events.UnityEvent<PlayerController> OnPlayerSpawn;
 
     [field: SerializeField]
     private int _livesRemaining = 3;
@@ -89,6 +90,7 @@ public class GameController : MonoBehaviour
             PlayerController pc = PlayerController.Spawn(PlayerTemplate, this);
             pc.transform.position = PlayerSpawnPoint.position;
             SpawnAt = -1;
+            OnPlayerSpawn.Invoke(pc);
         }
     }
 
