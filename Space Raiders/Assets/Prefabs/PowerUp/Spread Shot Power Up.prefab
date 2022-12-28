@@ -168,7 +168,10 @@ MonoBehaviour:
   <OnCollect>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  <Weapon>k__BackingField: {fileID: 7269265395018511851, guid: d98b8513b808e8f4e87de8529db55502, type: 3}
+  <Weapon>k__BackingField:
+    <FireRate>k__BackingField: 0.5
+    <LastFired>k__BackingField: 0
+    <LaserTemplate>k__BackingField: {fileID: 7269265395018511851, guid: d98b8513b808e8f4e87de8529db55502, type: 3}
 --- !u!1001 &2569334220253789791
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -261,7 +261,10 @@ MonoBehaviour:
   <Speed>k__BackingField: 5
   <DamageBoost>k__BackingField: 3
   _shieldPower: 0
-  <Laser>k__BackingField: {fileID: 7269265395018511851, guid: 5af9ec9544eb81c4d9f699144a6b673b, type: 3}
+  <Weapon>k__BackingField:
+    <FireRate>k__BackingField: 0.5
+    <LastFired>k__BackingField: 0
+    <LaserTemplate>k__BackingField: {fileID: 7269265395018511851, guid: 5af9ec9544eb81c4d9f699144a6b673b, type: 3}
   <FrontLaserSpawn>k__BackingField: {fileID: 3015076329648511911}
   <Velocity>k__BackingField: {x: 0, y: 0}
   <Min>k__BackingField: {x: -2.5, y: -5}

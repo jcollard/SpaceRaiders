@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [field: SerializeField]
-    public GameObject Laser { get; set; }
+    public Weapon Weapon { get; set; }
 
     [field: SerializeField]
     public Transform FrontLaserSpawn { get; private set; }
@@ -110,8 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire"))
         {
-            GameObject laser = Instantiate(Laser);
-            laser.transform.position = FrontLaserSpawn.position;
+            Weapon.Fire(FrontLaserSpawn);
         }
     }
 
