@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [field: SerializeField]
-    public GameObject Laser { get; private set; }
+    public GameObject Laser { get; set; }
 
     [field: SerializeField]
     public Transform FrontLaserSpawn { get; private set; }
