@@ -12,7 +12,7 @@ public class LootTableController : MonoBehaviour
 
     public void CheckDrop(DestructableController destructable)
     {
-        float chance = Random.Range(0, 1);
+        float chance = Random.Range(0f, 1f);
         if (chance > DropProbability) return;
         int ix = Random.Range(0, PowerUps.Count);
         PowerUpController powerUp = PowerUps[ix];

@@ -2627,7 +2627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da99ad05543acb459a4ea0ab69195a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <SpawnRate>k__BackingField: 3
+  _spawnRate: 3
   <GameController>k__BackingField: {fileID: 1254975466}
   <OnSpawn>k__BackingField:
     m_PersistentCalls:
@@ -2773,6 +2773,14 @@ MonoBehaviour:
     - {fileID: 293848689}
     <SpawnPoint>k__BackingField: {fileID: 82876607}
     <WaveDifficulty>k__BackingField: 3
+  - <Template>k__BackingField: {fileID: 6494428161321558861, guid: eabb80767c54bbe498252f89a220c4a0, type: 3}
+    <WayPoints>k__BackingField:
+    - {fileID: 1643366043}
+    - {fileID: 293848689}
+    - {fileID: 603449883}
+    - {fileID: 190331998}
+    <SpawnPoint>k__BackingField: {fileID: 82876607}
+    <WaveDifficulty>k__BackingField: 4
   <Spawner>k__BackingField: {fileID: 1373237149}
   <OnWaveCompleted>k__BackingField:
     m_PersistentCalls:
@@ -2801,7 +2809,7 @@ Transform:
   m_GameObject: {fileID: 1423777123}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

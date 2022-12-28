@@ -7,9 +7,22 @@ public class EnemySpawner : MonoBehaviour
 {
 
     [field: SerializeField]
-    public float SpawnRate { get; set; } = 3;
+    private float _spawnRate = 3;
+    public float SpawnRate
+    {
+        get => _spawnRate;
+        set
+        {
+            if (value <= 0)
+                throw new System.ArgumentException($"SpawnRate must be a positive value but was {value}");
+            CancelInvoke(nameof(SpawnNext));
+            _spawnRate = value;
+            InvokeRepeating(nameof(SpawnNext), SpawnRate, SpawnRate);
+        }
+    }
+
     [field: SerializeField]
-    private List<IEnemyShip> EnemyQueue { get; set; } = new ();
+    private List<IEnemyShip> EnemyQueue { get; set; } = new();
     [field: SerializeField]
     public GameController GameController { get; set; }
     [field: SerializeField]
@@ -18,7 +31,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         this.InvokeRepeating(nameof(SpawnNext), SpawnRate, SpawnRate);
-        // TODO: Look into CancelInvoke
     }
 
     private void SpawnNext()

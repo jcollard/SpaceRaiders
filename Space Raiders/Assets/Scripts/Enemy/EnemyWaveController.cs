@@ -46,6 +46,7 @@ public class EnemyWaveController : MonoBehaviour
     public void Reset()
     {
         Wave = 1;
+        Spawner.SpawnRate = 3;
         Invoke(nameof(StartWave), 3);
     }
 
@@ -61,6 +62,8 @@ public class EnemyWaveController : MonoBehaviour
             Spawner.EnqueEnemy(e);
         }
         OnWaveStart.Invoke(Wave);
+        float diff = Mathf.Clamp(Mathf.Log10(10 * Wave), 0, 2.5f) - 1;
+        Spawner.SpawnRate = 3 - diff;
     }
 
     private List<EnemyShip> FilterEnemies(int MaxWave)
