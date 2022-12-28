@@ -43,7 +43,7 @@ public class EnemyShipController : MonoBehaviour
          EnemyShipController newEnemy = Instantiate(enemy.Template);
          newEnemy.GetComponent<DestructableController>().GameController = gameController;
          newEnemy.WayPoints = enemy.WayPoints;
-         newEnemy.transform.position = enemy.SpawnPoint;
+         newEnemy.transform.position = enemy.SpawnPoint.position;
          return newEnemy;
     }
 

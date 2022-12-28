@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private List<IEnemyShip> EnemyQueue { get; set; } = new ();
     [field: SerializeField]
     public GameController GameController { get; set; }
+    [field: SerializeField]
+    public UnityEvent<EnemyShipController> OnSpawn { get; private set; }
 
     void Start()
     {
@@ -24,7 +27,8 @@ public class EnemySpawner : MonoBehaviour
         {
             IEnemyShip enemy = EnemyQueue[0];
             EnemyQueue.RemoveAt(0);
-            EnemyShipController.Spawn(enemy, GameController);
+            EnemyShipController newEnemy = EnemyShipController.Spawn(enemy, GameController);
+            OnSpawn.Invoke(newEnemy);
         }
     }
 
@@ -35,4 +39,6 @@ public class EnemySpawner : MonoBehaviour
             EnemyQueue.Add(e);
         }
     }
+
+    public void EnqueEnemy(IEnemyShip enemy) => EnemyQueue.Add(enemy);
 }

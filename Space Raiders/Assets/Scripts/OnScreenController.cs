@@ -10,6 +10,11 @@ public class OnScreenController : MonoBehaviour
     {
         if (transform.position.y < -7 || transform.position.y > 7)
         {
+            DestructableController destructable = GetComponent<DestructableController>();
+            if (destructable != null)
+            {
+                destructable.OnDestroyed.Invoke(destructable);
+            }
             Destroy(this.gameObject);
             OnDestroyed.Invoke();
         }

@@ -22,14 +22,7 @@ public class GameController : MonoBehaviour
     }
 
     [field: SerializeField]
-    private EnemySpawner EnemySpawner { get; set; }
-    [field: SerializeField]
-    public Transform EnemySpawnPoint { get; private set; }
-
-    [field: SerializeField]
-    public List<EnemyShipController> EnemyTypes { get; private set; }
-    [field: SerializeField]
-    public List<Transform> WayPoints { get; private set; }
+    private EnemyWaveController WaveController { get; set; }
 
     [field: SerializeField]
     public PlayerController PlayerTemplate { get; private set; }
@@ -70,26 +63,7 @@ public class GameController : MonoBehaviour
     public void InsertCoin()
     {
         DestroyAll();
-        List<Transform> waypoints = new()
-        {
-            WayPoints[0], WayPoints[1], WayPoints[2]
-        };
-        List<Transform> waypoints2 = new()
-        {
-            WayPoints[2], WayPoints[1], WayPoints[0]
-        };
-        List<Transform> waypoints3 = new()
-        {
-            WayPoints[0], WayPoints[2], WayPoints[1], WayPoints[2]
-        };
-        List<IEnemyShip> enemies = new()
-        {
-            new EnemyShip(EnemyTypes[0], waypoints, EnemySpawnPoint.position),
-            new EnemyShip(EnemyTypes[0], waypoints2, EnemySpawnPoint.position),
-            new EnemyShip(EnemyTypes[0], waypoints3, EnemySpawnPoint.position)
-        };
-        EnemySpawner.EnqueueEnemies(enemies);
-
+        WaveController.Reset();
         LivesRemaining = 3;
         Score = 0;
         SpawnPlayer();

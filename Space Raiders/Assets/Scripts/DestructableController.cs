@@ -11,9 +11,9 @@ public class DestructableController : MonoBehaviour
     [field: SerializeField]
     public int Points { get; private set; }
     [field: SerializeField]
-    private UnityEvent<LaserController, DestructableController>  OnHit { get; set; }
+    public UnityEvent<LaserController, DestructableController>  OnHit { get; private set; }
     [field: SerializeField]
-    private UnityEvent<DestructableController> OnDestroyed { get; set; }
+    public UnityEvent<DestructableController> OnDestroyed { get; private set; }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
